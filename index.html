@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Centro de bienestar Luna · Valladolid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6fafd; --ink:#1f3552; --soft:#556a82; --line:#d7e5ef;
+  --sage:#dbeaf6; --lilac:#e4e8f6; --blush:#f5f0d9; --mist:#e0eef4;
+  --accent:#2f6db5; --accent-ink:#ffffff; --field:#ffffff;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN",Georgia,serif;
+  --sans:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#121c29; --ink:#e4edf6; --soft:#a4b5c7; --line:#2b3b4e;
+  --sage:#1e3147; --lilac:#262b45; --blush:#383524; --mist:#1c2e3c;
+  --accent:#7fb0e6; --accent-ink:#0e1a28; --field:#1a2737;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121c29; --ink:#e4edf6; --soft:#a4b5c7; --line:#2b3b4e;
+  --sage:#1e3147; --lilac:#262b45; --blush:#383524; --mist:#1c2e3c;
+  --accent:#7fb0e6; --accent-ink:#0e1a28; --field:#1a2737;
+}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.7}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.25;margin:0 0 .6em;letter-spacing:.01em}
+h1{font-size:clamp(2.2rem,5.5vw,3.6rem)}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem)}
+h3{font-size:1.45rem}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0}
+.brand{font-family:var(--serif);font-size:1.25rem;text-decoration:none}
+nav a{margin-left:1.4rem;text-decoration:none;color:var(--soft)}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:3rem 0 5rem}
+.hero p{color:var(--soft);font-size:1.15rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.logo{justify-self:center;width:min(340px,80vw);height:auto;border-radius:32px;box-shadow:0 0 0 14px color-mix(in srgb,var(--mist) 70%,transparent)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.85rem 1.7rem;border-radius:999px;text-decoration:none;font-weight:500;border:0;font:inherit;font-weight:500;cursor:pointer}
+.btn:hover{filter:brightness(.95)}
+section{padding:4rem 0}
+.intro{color:var(--soft)}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.card{border-radius:28px;padding:2.2rem}
+.card.a{background:var(--sage)}
+.card.b{background:var(--lilac)}
+.price{display:flex;align-items:baseline;gap:.8rem;margin:.3rem 0 1.2rem;font-family:var(--serif)}
+.price s{color:var(--soft);font-size:1.15rem}
+.price strong{font-size:2.1rem;font-weight:500}
+.tag{display:inline-block;background:var(--blush);color:var(--ink);border-radius:999px;padding:.15rem .8rem;font-size:.9rem}
+.card ul{padding-left:1.1rem;margin:0 0 1.5rem}
+.card li{margin-bottom:.35rem}
+.work{background:var(--mist);border-radius:36px;padding:3rem;display:grid;grid-template-columns:1fr 1.1fr;gap:3rem}
+form{display:grid;gap:1rem}
+label{display:grid;gap:.3rem;font-size:.95rem;color:var(--soft)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:14px;padding:.7rem .9rem;width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ok{display:none;background:var(--field);border-radius:14px;padding:1rem}
+.gift{background:var(--blush);border-radius:36px;padding:3rem;text-align:center}
+.gift p{margin-left:auto;margin-right:auto}
+.gift form{max-width:560px;margin:1.5rem auto 0;text-align:left}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:.8rem}
+legend{position:absolute;left:-9999px}
+label.opt{display:flex;gap:.9rem;align-items:flex-start;background:var(--field);border:2px solid transparent;border-radius:18px;padding:1rem 1.2rem;color:var(--ink);cursor:pointer}
+label.opt:has(input:checked){border-color:var(--accent)}
+label.opt input{width:auto;margin-top:.45rem;accent-color:var(--accent)}
+label.opt strong{display:block;font-family:var(--serif);font-weight:500;font-size:1.15rem}
+label.opt span{color:var(--soft)}
+@media (max-width:760px){.gift{padding:1.8rem}}
+footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
+@media (max-width:760px){
+  .hero,.services,.work,.row{grid-template-columns:1fr}
+  .work{padding:1.8rem}
+  .logo{order:-1;width:230px}
+  nav a:not(.keep){display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="#inicio">Centro de bienestar Luna</a>
+    <nav><a href="#servicios">Servicios</a><a href="#trabaja" class="keep">Trabaja con nosotros</a></nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero">
+      <div>
+        <h1>Un momento de calma para cuidar de ti</h1>
+        <p>En Centro de bienestar Luna conocemos tu cuerpo y cuidamos tu piel con tratamientos pausados, personalizados y sin prisas.</p>
+        <a class="btn" href="#regalo">Elegir mi regalo</a>
+      </div>
+      <img class="logo" width="480" height="562" src="logo.jpg" alt="Logo del Centro de bienestar Luna: una luna azul sobre una mano abierta">
+    </div>
+
+    <section id="servicios">
+      <h2>Nuestros servicios</h2>
+      <p class="intro">Dos experiencias para empezar, ahora con precio de promoción.</p>
+      <div class="services">
+        <article class="card a">
+          <span class="tag">Promoción: gratis</span>
+          <h3>Estudio de composición corporal</h3>
+          <div class="price"><s>30 €</s><strong>Gratis</strong></div>
+          <p>Un análisis completo de tu cuerpo para entender cómo estás hoy.</p>
+          <ul>
+            <li>Medición por bioimpedancia</li>
+            <li>Porcentaje de grasa, músculo y agua</li>
+            <li>Edad metabólica</li>
+            <li>Peso de la masa ósea</li>
+            <li>Grasa visceral y factor proteico</li>
+            <li>Bebida reductora y quemagrasa natural</li>
+          </ul>
+        </article>
+        <article class="card b">
+          <span class="tag">Promoción especial</span>
+          <h3>Experiencia cosmética coreana</h3>
+          <div class="price"><s>60 €</s><strong>10 €</strong></div>
+          <p>Un ritual facial relajante para una piel limpia, hidratada y luminosa.</p>
+          <ul>
+            <li>Escáner facial</li>
+            <li>Bebida lifting</li>
+            <li>Productos de limpieza e hidratación</li>
+            <li>Masaje con piedra GuaSha</li>
+            <li>Yoga facial</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="regalo">
+      <div class="gift">
+        <h2>Elige tu regalo</h2>
+        <p>Escoge uno de los dos y déjanos tu nombre y tu WhatsApp. Te escribiremos para darte tu cita.</p>
+        <form id="g" novalidate>
+          <fieldset>
+            <legend>Tu regalo</legend>
+            <label class="opt"><input type="radio" name="regalo" value="Estudio de composición corporal" checked><span><strong>Estudio de composición corporal</strong>Gratis, valorado en 30 €</span></label>
+            <label class="opt"><input type="radio" name="regalo" value="Experiencia cosmética coreana"><span><strong>Experiencia cosmética coreana</strong>10 € en lugar de 60 €</span></label>
+          </fieldset>
+          <label>Tu nombre<input name="nombre" autocomplete="name" required></label>
+          <label>Tu WhatsApp<input name="wa" type="tel" autocomplete="tel" placeholder="+34 600 000 000" required></label>
+          <button class="btn" type="submit">Quiero mi cita</button>
+          <div class="ok" id="gok" role="status" tabindex="-1"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="trabaja">
+      <div class="work">
+        <div>
+          <h2>Trabaja con nosotros</h2>
+          <p>Tenemos centros en 95 países y seguimos creciendo. Déjanos tus datos y agendaremos una llamada o videollamada para contarte cómo unirte a nuestro equipo.</p>
+        </div>
+        <form id="f" novalidate>
+          <label>Nombre y apellidos<input name="nombre" autocomplete="name" required></label>
+          <div class="row">
+            <label>Correo electrónico<input name="email" type="email" autocomplete="email" required></label>
+            <label>Teléfono<input name="tel" type="tel" autocomplete="tel" required></label>
+          </div>
+          <div class="row">
+            <label>País y ciudad<input name="lugar" autocomplete="country-name"></label>
+            <label>Prefiero
+              <select name="canal"><option>Llamada</option><option>Videollamada</option></select>
+            </label>
+          </div>
+          <label>Mejor horario para contactarte<input name="horario" placeholder="Por ejemplo: tardes de lunes a jueves"></label>
+          <label>Cuéntanos brevemente tu interés<textarea name="msg" rows="3"></textarea></label>
+          <button class="btn" type="submit">Solicitar llamada</button>
+          <div class="ok" id="ok" role="status" tabindex="-1"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p style="margin:0 auto"><strong>Centro de bienestar Luna</strong><br>Calle Luna 1, entreplanta C · 47007 Valladolid</p>
+  </footer>
+</div>
+<script>
+// Los formularios abren WhatsApp con el mensaje ya escrito.
+var WA_NUMBER="34605042614";
+document.getElementById("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  var f=e.target,d=new FormData(f),ok=document.getElementById("ok");
+  if(!d.get("nombre")||!d.get("email")||!d.get("tel")){
+    ok.style.display="block";ok.textContent="Completa nombre, correo y teléfono para poder contactarte.";ok.focus();return;
+  }
+  var body=["Nombre: "+d.get("nombre"),"Correo: "+d.get("email"),"Teléfono: "+d.get("tel"),
+    "País y ciudad: "+d.get("lugar"),"Preferencia: "+d.get("canal"),"Horario: "+d.get("horario"),"","Mensaje: "+d.get("msg")].join("\n");
+  window.location.href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Trabaja con nosotros: solicitud de contacto\n\n"+body);
+  ok.style.display="block";ok.textContent="Gracias. Se abrirá WhatsApp con tu mensaje listo para enviar.";ok.focus();
+});
+document.getElementById("g").addEventListener("submit",function(e){
+  e.preventDefault();
+  var d=new FormData(e.target),ok=document.getElementById("gok");
+  if(!d.get("nombre")||!d.get("wa")){
+    ok.style.display="block";ok.textContent="Escribe tu nombre y tu WhatsApp para poder darte la cita.";ok.focus();return;
+  }
+  var body=["Regalo elegido: "+d.get("regalo"),"Nombre: "+d.get("nombre"),"WhatsApp: "+d.get("wa")].join("\n");
+  window.location.href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Solicitud de cita\n\n"+body);
+  ok.style.display="block";ok.textContent="Gracias, "+d.get("nombre")+". Se abrirá WhatsApp con tu solicitud lista para enviar.";ok.focus();
+});
+</script>
+</body>
+</html>
