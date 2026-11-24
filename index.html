@@ -53,6 +53,8 @@ nav a:hover{color:var(--ink)}
 .btn:hover{filter:brightness(.95)}
 section{padding:4rem 0}
 .intro{color:var(--soft)}
+.ico{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:var(--bg);color:var(--accent);margin-bottom:1rem;flex:none}
+.ico svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .services{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
 .card{border-radius:28px;padding:2.2rem}
 .card.a{background:var(--sage)}
@@ -75,9 +77,10 @@ input,select,textarea{font:inherit;color:var(--ink);background:var(--field);bord
 .gift form{max-width:560px;margin:1.5rem auto 0;text-align:left}
 fieldset{border:0;padding:0;margin:0;display:grid;gap:.8rem}
 legend{position:absolute;left:-9999px}
-label.opt{display:flex;gap:.9rem;align-items:flex-start;background:var(--field);border:2px solid transparent;border-radius:18px;padding:1rem 1.2rem;color:var(--ink);cursor:pointer}
+label.opt{display:flex;gap:.9rem;align-items:center;background:var(--field);border:2px solid transparent;border-radius:18px;padding:1rem 1.2rem;color:var(--ink);cursor:pointer}
 label.opt:has(input:checked){border-color:var(--accent)}
-label.opt input{width:auto;margin-top:.45rem;accent-color:var(--accent)}
+label.opt input{width:auto;accent-color:var(--accent)}
+label.opt .ico{width:46px;height:46px;margin:0;background:var(--sage)}
 label.opt strong{display:block;font-family:var(--serif);font-weight:500;font-size:1.15rem}
 label.opt span{color:var(--soft)}
 @media (max-width:760px){.gift{padding:1.8rem}}
@@ -91,6 +94,11 @@ footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-cuerpo" viewBox="0 0 24 24"><path d="M3 12h4l2.5-7 5 14 2.5-7h4"/></symbol>
+  <symbol id="i-piel" viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"/><path d="M19 17v4M17 19h4"/></symbol>
+  <symbol id="i-libro" viewBox="0 0 24 24"><path d="M3 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z"/></symbol>
+</svg>
 <div class="wrap">
   <header>
     <a class="brand" href="#inicio">Centro de bienestar Luna</a>
@@ -109,9 +117,10 @@ footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
 
     <section id="servicios">
       <h2>Nuestros servicios</h2>
-      <p class="intro">Tres formas de cuidarte por dentro y por fuera. Las dos primeras, con precio de promoción.</p>
+      <p class="intro">Tres formas de cuidarte por dentro y por fuera.</p>
       <div class="services">
         <article class="card a">
+          <div class="ico"><svg aria-hidden="true"><use href="#i-cuerpo"/></svg></div>
           <span class="tag">Promoción: gratis</span>
           <h3>Estudio de composición corporal</h3>
           <div class="price"><s>30 €</s><strong>Gratis</strong></div>
@@ -126,6 +135,7 @@ footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
           </ul>
         </article>
         <article class="card b">
+          <div class="ico"><svg aria-hidden="true"><use href="#i-piel"/></svg></div>
           <span class="tag">Promoción especial</span>
           <h3>Experiencia cosmética coreana</h3>
           <div class="price"><s>60 €</s><strong>10 €</strong></div>
@@ -139,8 +149,10 @@ footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
           </ul>
         </article>
         <article class="card c">
+          <div class="ico"><svg aria-hidden="true"><use href="#i-libro"/></svg></div>
           <span class="tag">12 módulos de 30 minutos</span>
           <h3>Escuela de Alimentación Correcta</h3>
+          <div class="price"><strong>Gratis</strong></div>
           <p>Aprende nutrición y bienestar paso a paso, en módulos breves que se siguen con facilidad.</p>
           <ul>
             <li>Presencial: todos los miércoles a las 18:00 en el Centro de bienestar Luna</li>
@@ -158,8 +170,8 @@ footer{padding:3rem 0 4rem;color:var(--soft);text-align:center}
         <form id="g" novalidate>
           <fieldset>
             <legend>Tu regalo</legend>
-            <label class="opt"><input type="radio" name="regalo" value="Estudio de composición corporal" checked><span><strong>Estudio de composición corporal</strong>Gratis, valorado en 30 €</span></label>
-            <label class="opt"><input type="radio" name="regalo" value="Experiencia cosmética coreana"><span><strong>Experiencia cosmética coreana</strong>10 € en lugar de 60 €</span></label>
+            <label class="opt"><input type="radio" name="regalo" value="Estudio de composición corporal" checked><span class="ico"><svg aria-hidden="true"><use href="#i-cuerpo"/></svg></span><span><strong>Estudio de composición corporal</strong>Gratis, valorado en 30 €</span></label>
+            <label class="opt"><input type="radio" name="regalo" value="Experiencia cosmética coreana"><span class="ico"><svg aria-hidden="true"><use href="#i-piel"/></svg></span><span><strong>Experiencia cosmética coreana</strong>10 € en lugar de 60 €</span></label>
           </fieldset>
           <label>Tu nombre<input name="nombre" autocomplete="name" required></label>
           <label>Tu WhatsApp<input name="wa" type="tel" autocomplete="tel" placeholder="+34 600 000 000" required></label>
